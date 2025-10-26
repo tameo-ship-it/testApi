@@ -12,6 +12,9 @@ RUN npm install
 # Copy toàn bộ code
 COPY . .
 
+# 5. Copy .env vào image
+COPY .env . 
+
 # Build project
 RUN npm run build
 

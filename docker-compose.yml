@@ -9,24 +9,10 @@ services:
     restart: always
     env_file:
       - .env
-    depends_on:
-      - mongodb
     networks:
       - mynet
     ports:
       - '3000:3000'
-
-  mongodb:
-    image: mongo:6.0.13
-    container_name: mongo_db
-    restart: always
-    volumes:
-      - mongo_data:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    networks:
-      - mynet
 
   nginx:
     image: nginx:latest
@@ -40,9 +26,6 @@ services:
       - nestjs
     networks:
       - mynet
-
-volumes:
-  mongo_data:
 
 networks:
   mynet:

@@ -2,17 +2,19 @@ version: '3.8'
 
 services:
   nestjs:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: nestjs_app
     restart: always
     env_file:
       - .env
     depends_on:
       - mongodb
-    ports:
-      - '3000:3000'
     networks:
       - mynet
+    ports:
+      - '3000:3000'
 
   mongodb:
     image: mongo:6
